@@ -1,0 +1,31 @@
+<div class="row mb-4 blog post-border">
+  <div class="col-md-5">
+    <h2>
+      <!-- Call helper function with triple brackets to render the emoji span as HTML -->
+      <a href="/blog/{{blog.id}}">{{blog.title}}</a>
+    </h2>
+    <p>{{blog.post_body}}</p>
+    <p>{{blog.post_tags}}</p>
+    <p>Created by {{blog.user.name}} on {{format_date blog.date_created}}</p>
+  </div>
+  <div class="col-md-7">
+    <p>
+      {{blog.description}}
+    </p>
+  </div>
+</div>
+{{#each comments as |comment| }}
+<div class="row mb-4 blog post-border">
+  <div class="col-md-5">
+    <p>{{comment.comment_text}}</p>
+  </div>
+</div>
+{{/each}}
+<form>
+  <div class="form-group">
+    <label for="comment-text">Comment</label>
+    <input type="text" class="form-control" id="comment-text" aria-describedby="emailHelp" placeholder="Enter comment">
+  </div>
+  <button id="submit-comment" type="submit" class="btn btn-primary">Comment</button>
+</form>
+<script src="./js/comment.js"></script>
